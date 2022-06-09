@@ -1,39 +1,93 @@
 package main.java.de.car2go.gui;
 
 import main.java.de.car2go.controller.Controller;
-import main.java.de.car2go.gui.reportmanager.ReportForm;
-import main.java.de.car2go.gui.seller.SellerForm;
+import main.java.de.car2go.gui.reportmanager.addReport;
 import main.java.de.car2go.gui.seller.addBuyer;
 import main.java.de.car2go.gui.seller.addCar;
 import main.java.de.car2go.gui.seller.addContract;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUIManager {
+    private JButton openReportForm = new JButton("Gutachten hinzufuegen");
+    private JButton openBuyerForm = new JButton("Kunden hinzufuegen");
+    private JButton openCarForm = new JButton("Auto hinzufuegen");
+    private JButton openContractForm = new JButton("Vertrag hinzufuegen");
+    private JButton abort = new JButton("abort");
+    private JFrame frame = new JFrame("Car2Go");
+    private JPanel mainPanel = new JPanel();
+    private JPanel reportForm ;
+    private JPanel buyerForm ;
+    private JPanel carForm ;
+    private JPanel contractForm ;
+
+
 
     public GUIManager(Controller controller) {
-        JFrame frame = new JFrame("DEBUG FORM");
-        //frame.setContentPane(new ReportForm(controller).getPanel());
-        //frame.setContentPane(new addBuyer(controller).getPanel());
-        JPanel container = new JPanel();
-        container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
+        addReport addReport = new addReport(controller);
+        addBuyer addBuyer = new addBuyer(controller);
+        addCar addCar = new addCar(controller);
+        addContract addContract = new addContract(controller);
 
-        JPanel reportFormPanel = new ReportForm(controller).getPanel();
-        JPanel addBuyerPanel = new addBuyer(controller).getPanel();
-        JPanel addCarPanel = new addCar(controller).getPanel();
-        JPanel addContractPanel = new addContract(controller).getPanel();
-        JPanel sellerForm = new SellerForm(controller).getPanel();
+        this.reportForm = addReport.getPanel();
+        this.buyerForm = addBuyer.getPanel();
+        this.carForm = addCar.getPanel();
+        this.contractForm = addContract.getPanel();
 
-        container.add(reportFormPanel);
-        container.add(addBuyerPanel);
-        container.add(addCarPanel);
-        container.add(addContractPanel);
-        container.add(sellerForm);
-        frame.add(container);
+        mainPanel.add(openReportForm);
+        mainPanel.add(openBuyerForm);
+        mainPanel.add(openCarForm);
+        mainPanel.add(openContractForm);
+        mainPanel.add(abort);
+        frame.add(mainPanel);
 
-        //panel1.set[Preferred/Maximum/Minimum]Size()
+        frame.setBounds(200,200, 1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        openReportForm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.add(reportForm);
+                frame.pack();
+            }
+        });
+
+        openBuyerForm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.add(buyerForm);
+                frame.pack();
+            }
+        });
+        openCarForm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.add(carForm);
+                frame.pack();
+            }
+        });
+        openContractForm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.add(contractForm);
+                frame.pack();
+            }
+        });
+        abort.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.remove(reportForm);
+                frame.remove(carForm);
+                frame.remove(contractForm);
+                frame.remove(buyerForm);
+                frame.pack();
+                frame.repaint();
+            }
+        });
+
     }
 }

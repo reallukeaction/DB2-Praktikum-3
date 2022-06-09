@@ -3,15 +3,8 @@ package main.java.de.car2go;
 import main.java.de.car2go.controller.Controller;
 import main.java.de.car2go.databasemanager.DatabaseManager;
 import main.java.de.car2go.gui.GUIManager;
-import main.java.de.car2go.helper.Helper;
-import main.java.de.car2go.sqlbuilder.SqlProceduresAndFunctions;
-import main.java.de.car2go.sqlbuilder.SqlStatementBuilder;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 
 public class Application {
 
@@ -20,7 +13,7 @@ public class Application {
         DatabaseManager databaseManager = new DatabaseManager();
         Connection connection = databaseManager.getConnection();
         Controller controller = new Controller(connection);
-        GUIManager guiManager = new GUIManager(controller);
+        GUIManager gui = new GUIManager(controller);
 
        /*
 

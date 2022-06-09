@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class ReportForm {
+public class addReport {
     private JTextField textField_fahrzeug;
     private JTextField textField_vertrag;
     private JTextField textField_maengel;
@@ -24,7 +24,7 @@ public class ReportForm {
     private JButton deleteReportButton;
     private JButton updateReportButton;
 
-    public ReportForm(Controller controller) {
+    public addReport(Controller controller) {
 
         createNewReportButton.addActionListener(new ActionListener() {
             /**
