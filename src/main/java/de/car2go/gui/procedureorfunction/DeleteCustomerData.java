@@ -1,11 +1,13 @@
 package main.java.de.car2go.gui.procedureorfunction;
 
 import main.java.de.car2go.controller.Controller;
+import main.java.de.car2go.gui.GUIAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.List;
 
 public class DeleteCustomerData {
     private JLabel customer_id;
@@ -23,8 +25,7 @@ public class DeleteCustomerData {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO add database integration, write result into area_result
-
+                controller.addInput(GUIAction.DELETE_KUNDEN, List.of(textField1.getText()));
             }
         });
 

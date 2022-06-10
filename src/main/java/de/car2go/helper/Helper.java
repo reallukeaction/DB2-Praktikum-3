@@ -18,11 +18,11 @@ public class Helper {
     }
 
     public static String fromStringToDate(String date){
-        if(date.matches("\\d{2}.\\d{2}.\\d{4}") && date.contains(".")){
+        //if(date.matches("\\d{2}.\\d{2}.\\d{4}") && date.contains(".")){
             String temp = "TO_DATE('"+date+"','dd.mm.yyyy')";
             return temp;
-        } else {
-            throw new RuntimeException("Invalid date.");
-        }
+       // } else {
+        //    throw new RuntimeException("Invalid date.");
+        //}
     }
 }

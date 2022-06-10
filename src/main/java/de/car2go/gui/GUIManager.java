@@ -17,7 +17,7 @@ public class GUIManager {
     private JButton openBuyerForm = new JButton("Kunden hinzufuegen");
     private JButton openCarForm = new JButton("Auto hinzufuegen");
     private JButton openContractForm = new JButton("Vertrag hinzufuegen");
-    private JButton delete_customer_data = new JButton("Kundendaten, löschen");
+    private JButton delete_customer_data = new JButton("Kundendaten löschen");
     private JButton raise_wages_renter = new JButton("Gehalt von Vermieter erhöhen");
     private JButton abort = new JButton("abort");
     private JFrame frame = new JFrame("Car2Go");

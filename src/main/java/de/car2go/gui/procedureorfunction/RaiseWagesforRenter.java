@@ -1,10 +1,13 @@
 package main.java.de.car2go.gui.procedureorfunction;
 
 import main.java.de.car2go.controller.Controller;
+import main.java.de.car2go.gui.GUIAction;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RaiseWagesforRenter {
     private JPanel panel;
@@ -23,7 +26,8 @@ public class RaiseWagesforRenter {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO add sql logic
+                System.out.println("test "+ textField_shop_id.getText());
+                controller.addInput(GUIAction.RAISE_WAGES_20, List.of(textField_shop_id.getText()));
 
             }
 

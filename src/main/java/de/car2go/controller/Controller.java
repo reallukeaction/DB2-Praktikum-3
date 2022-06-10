@@ -2,6 +2,7 @@ package main.java.de.car2go.controller;
 
 import main.java.de.car2go.gui.GUIAction;
 import main.java.de.car2go.helper.Helper;
+import main.java.de.car2go.sqlbuilder.SqlProceduresAndFunctions;
 import main.java.de.car2go.sqlbuilder.SqlStatementBuilder;
 
 import java.sql.Connection;
@@ -28,6 +29,8 @@ public class Controller {
             case INSERT_KUNDEN: performInsertIntoKunden(inputs); break;
             case INSERT_FAHRZEUGE: performInsertIntoFahrzeuge(inputs); break;
             case INSERT_VERTRAEGE: performInsertIntoVertraege(inputs); break;
+            case RAISE_WAGES_20: performRaiseWages20(inputs); break;
+            case DELETE_KUNDEN: performDeleteOnKunden(inputs);break;
             default: break;
         }
 
@@ -84,6 +87,14 @@ public class Controller {
         String insertIntoVerträge = SqlStatementBuilder.createInsertStatement("Verträge",List.of("Fahrzeuge_ID","Kunden_Personen_ID","Vermieter_Personen_ID","Beschreibung","Von","Bis","Zurückgebracht_Am"),
                 List.of(inputs.get(0),inputs.get(1),inputs.get(2),"'"+inputs.get(3)+"'",Helper.fromStringToDate(inputs.get(4)),Helper.fromStringToDate(inputs.get(5)),Helper.fromStringToDate(inputs.get(6))));
         SqlStatementBuilder.performAction(insertIntoVerträge,connection);
+    }
+
+    private void performRaiseWages20(List<String> inputs){
+        SqlProceduresAndFunctions.raiseWagesForRenter(Integer.parseInt(inputs.get(0)),20,connection);
+    }
+
+    private void performDeleteOnKunden(List<String> inputs){
+        SqlProceduresAndFunctions.deleteCustomerData(Integer.parseInt(inputs.get(0)),connection);
     }
 
 

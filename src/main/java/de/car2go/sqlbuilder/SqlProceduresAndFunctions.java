@@ -30,22 +30,4 @@ public class SqlProceduresAndFunctions {
         }
     }
 
-    //TODO FIX
-    public static String allVehiclesInTimeFrame(String startDate, String endDate, Connection connection){
-        String function = "{call alleFahrzeugeImZeitraum(?,?)}";
-        startDate = Helper.fromStringToDate(startDate);
-        endDate = Helper.fromStringToDate(endDate);
-        try {
-            CallableStatement callableStatement = connection.prepareCall(function);
-            callableStatement.registerOutParameter(1, Types.VARCHAR);
-            callableStatement.setString(2,startDate);
-            callableStatement.setString(3,endDate);
-            String temp = callableStatement.getString(1);
-            return temp;
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not execute function.");
-        }
-    }
-
-
 }
