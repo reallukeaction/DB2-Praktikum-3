@@ -25,9 +25,20 @@ public class addContract {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.addInput(GUIAction.INSERT_VERTRAEGE, List.of(textField_vehicle.getText(),textField_buyer.getText(),textField_seller.getText(),textField_description.getText(),textField_von.getText(),textField_bis.getText(),textField_back.getText()));
+                empty();
             }
         });
     }
+    private void empty(){
+        textField_back.setText("");
+        textField_bis.setText("");
+        textField_buyer.setText("");
+        textField_description.setText("");
+        textField_seller.setText("");
+        textField_vehicle.setText("");
+        textField_von.setText("");
+    }
+
     public JPanel getPanel(){
         return panel;
     }

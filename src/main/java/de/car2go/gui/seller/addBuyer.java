@@ -26,8 +26,18 @@ public class addBuyer {
             @Override
             public void actionPerformed(ActionEvent e) {
                controller.addInput(GUIAction.INSERT_KUNDEN, List.of(textField_name.getText(),textField_nachname.getText(),textField_birthday.getText(),textField_email.getText(),textField_phonenumber.getText(),textField_adress.getText()));
+               empty();
             }
         });
+    }
+
+    private void empty(){
+        textField_adress.setText("");
+        textField_birthday.setText("");
+        textField_email.setText("");
+        textField_nachname.setText("");
+        textField_name.setText("");
+        textField_phonenumber.setText("");
     }
 
     public JPanel getPanel(){

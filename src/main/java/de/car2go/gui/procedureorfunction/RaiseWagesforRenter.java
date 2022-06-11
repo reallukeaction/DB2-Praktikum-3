@@ -26,13 +26,17 @@ public class RaiseWagesforRenter {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                textArea_result.setText("");
                 System.out.println("test "+ textField_shop_id.getText());
                 controller.addInput(GUIAction.RAISE_WAGES_20, List.of(textField_shop_id.getText()));
-
+                empthy();
             }
 
         });
 
+    }
+    private void empthy(){
+        textField_shop_id.setText("");
     }
     public JPanel getPanel(){
         return panel;

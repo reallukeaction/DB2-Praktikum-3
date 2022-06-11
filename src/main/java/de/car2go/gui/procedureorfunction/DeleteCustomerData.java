@@ -25,10 +25,15 @@ public class DeleteCustomerData {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                area_result.setText("");
                 controller.addInput(GUIAction.DELETE_KUNDEN, List.of(textField1.getText()));
+                empthy();
             }
         });
 
+    }
+    private void empthy(){
+        textField1.setText("");
     }
     public JPanel getPanel(){
         return this.panel;

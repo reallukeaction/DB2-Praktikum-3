@@ -56,6 +56,7 @@ public class addReport {
                 }
                 message("Eingabe erfolgreich");
                 controller.addInput(GUIAction.INSERT_GUTACHTEN, List.of(textField_kunden.getText(),textField_fahrzeug.getText(),textField_vertrag.getText(),textField_maengel.getText(),textField_schaden.getText()));
+                empty();
             }
         });
         deleteReportButton.addActionListener(new ActionListener() {
@@ -104,8 +105,17 @@ public class addReport {
 
                 message("Eingabe erfolgreich");
                 controller.addInput(GUIAction.UPDATE_GUTACHTEN, List.of(textField_kunden.getText(),textField_fahrzeug.getText(),textField_vertrag.getText(),textField_maengel.getText(),textField_schaden.getText()));
+                empty();
             }
         });
+    }
+
+    private void empty(){
+        textField_fahrzeug.setText("");
+        textField_kunden.setText("");
+        textField_maengel.setText("");
+        textField_schaden.setText("");
+        textField_vertrag.setText("");
     }
 
     private void message(String s){
