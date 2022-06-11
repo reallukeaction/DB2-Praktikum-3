@@ -2,6 +2,7 @@ package main.java.de.car2go.sqlbuilder;
 
 import main.java.de.car2go.helper.Helper;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.List;
 
@@ -67,6 +68,7 @@ public class SqlStatementBuilder {
                 resultSet = statement.executeQuery(sqlString);
             }
         } catch (SQLException e) {
+            message("Something went wrong. Please try again.");
             e.printStackTrace();
         }
         if(statement == null){
@@ -77,10 +79,13 @@ public class SqlStatementBuilder {
                 connection.commit();
             }
         } catch (SQLException e) {
+            message("Something went wrong. Please try again.");
             e.printStackTrace();
         }
         return resultSet;
     }
 
-
+    private static void message(String s){
+        JOptionPane.showMessageDialog(null, s);
+    }
 }

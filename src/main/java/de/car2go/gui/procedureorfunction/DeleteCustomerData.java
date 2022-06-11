@@ -27,6 +27,8 @@ public class DeleteCustomerData {
             public void actionPerformed(ActionEvent e) {
                 area_result.setText("");
                 controller.addInput(GUIAction.DELETE_KUNDEN, List.of(textField1.getText()));
+                String result = controller.performSelectOnKunden(List.of(textField1.getText()));
+                area_result.setText(result);
                 empthy();
             }
         });

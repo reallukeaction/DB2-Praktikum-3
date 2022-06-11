@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Controller {
 
-    //ArrayList<String> inputs = new ArrayList<>();
 
     private Connection connection;
     public Controller(Connection connection){
@@ -31,6 +30,7 @@ public class Controller {
             case INSERT_VERTRAEGE: performInsertIntoVertraege(inputs); break;
             case RAISE_WAGES_20: performRaiseWages20(inputs); break;
             case DELETE_KUNDEN: performDeleteOnKunden(inputs);break;
+            case SELECT_VERMIETER: performSelectOnVermieter(inputs); break;
             default: break;
         }
 
@@ -95,6 +95,40 @@ public class Controller {
 
     private void performDeleteOnKunden(List<String> inputs){
         SqlProceduresAndFunctions.deleteCustomerData(Integer.parseInt(inputs.get(0)),connection);
+    }
+
+    public String performSelectOnVermieter(List<String> inputs){
+        String selectOnVermieter = SqlStatementBuilder.createSelectStatement("Nachname,Vorname,Gehalt","Vermieter","WHERE Filialen_ID = "+ inputs.get(0));
+        ResultSet resultSet = SqlStatementBuilder.performAction(selectOnVermieter,connection);
+        String result = "";
+            String entry = "";
+            try {
+                while (resultSet.next()){
+                    entry+="Nachname: "+resultSet.getString(1)+" Vorname: "+resultSet.getString(2)+" Gehalt: "+resultSet.getInt(3);
+                    result+=entry+"\n";
+                    entry="";
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return result;
+    }
+
+    public String performSelectOnKunden(List<String> inputs){
+        String selectOnKunden = SqlStatementBuilder.createSelectStatement("Nachname,Vorname,Personen_ID","Kunden","");
+        ResultSet resultSet = SqlStatementBuilder.performAction(selectOnKunden,connection);
+        String result = "";
+        String entry = "";
+        try {
+            while (resultSet.next()){
+                entry+="Nachname: "+resultSet.getString(1)+" Vorname: "+resultSet.getString(2)+" ID: "+resultSet.getInt(3);
+                result+=entry+"\n";
+                entry="";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 
