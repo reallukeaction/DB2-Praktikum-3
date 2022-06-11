@@ -9,6 +9,7 @@ import main.java.de.car2go.gui.seller.addCar;
 import main.java.de.car2go.gui.seller.addContract;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -55,7 +56,7 @@ public class GUIManager {
         mainPanel.add(abort);
         frame.add(mainPanel);
 
-        frame.setBounds(200,200, 1000, 1000);
+        frame.setMinimumSize(new Dimension(1100, 75));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
